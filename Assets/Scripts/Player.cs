@@ -75,9 +75,9 @@ public class Player : MovingObject
 				{
 					vertical = y > 0 ? 1 : -1;
 				}
-#endif
 			}
 		}
+#endif
 
         if (horizontal != 0 || vertical != 0)
         {

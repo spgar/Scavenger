@@ -38,8 +38,20 @@ public class GameManager : MonoBehaviour
         InitGame();
 	}
 
+    #if !UNITY_EDITOR
+    static bool firstRun = true;
+    #endif
+
     private void OnLevelWasLoaded(int index)
     {
+    #if !UNITY_EDITOR
+        if (firstRun)
+        {
+            firstRun = false;
+            return;
+        }
+    #endif
+        
         level++;
         InitGame();
     }
