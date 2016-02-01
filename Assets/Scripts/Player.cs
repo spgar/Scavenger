@@ -2,6 +2,7 @@
 using System.Collections;
 using System;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MovingObject
 {
@@ -22,7 +23,9 @@ public class Player : MovingObject
     private Animator animator;
     private int food;
 
+#if !UNITY_STANDALONE && !UNITY_WEBPLAYER
 	private Vector2 touchOrigin = -Vector2.one;
+#endif
 
     protected override void Start()
     {
@@ -133,7 +136,7 @@ public class Player : MovingObject
 
     private void Restart()
     {
-        Application.LoadLevel(Application.loadedLevel);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void OnDisable()
